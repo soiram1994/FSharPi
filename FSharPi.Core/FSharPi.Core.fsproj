@@ -6,7 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="FsharPiTypes.fs" />
+        <Compile Include="Helpers.fs" />
+        <Compile Include="Raspberry.fs" />
     </ItemGroup>
 
 </Project>

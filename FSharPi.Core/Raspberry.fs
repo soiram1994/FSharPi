@@ -1,6 +1,7 @@
 namespace FSharPi.Core
 
 open System.Diagnostics
+open Helpers
 
 module RaspberryPi =
     let GetTemperature =
@@ -8,11 +9,11 @@ module RaspberryPi =
         psi.RedirectStandardOutput <- true
         psi.UseShellExecute <- false
         let tempProcess = Process.Start(psi)
-        tempProcess.StandardOutput.ReadToEnd()
+        ToResult(fun () -> tempProcess.StandardOutput.ReadToEnd())
 
     let GetCpuInfo =
         let psi = new ProcessStartInfo("cat", "/proc/cpuinfo")
         psi.RedirectStandardOutput <- true
         psi.UseShellExecute <- false
         let cpuInfoProcess = Process.Start(psi)
-        cpuInfoProcess.StandardOutput.ReadToEnd()
+        ToResult(fun () -> cpuInfoProcess.StandardOutput.ReadToEnd())
